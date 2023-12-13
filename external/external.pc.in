@@ -1,0 +1,10 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: external
+Description: My external library
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lexternal
+Cflags: -I${includedir}

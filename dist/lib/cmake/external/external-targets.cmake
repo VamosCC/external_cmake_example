@@ -53,9 +53,13 @@ endif()
 # Create imported target external::external
 add_library(external::external SHARED IMPORTED)
 
+set_target_properties(external::external PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+)
+
 # Load information for each installed configuration.
 get_filename_component(_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
-file(GLOB CONFIG_FILES "${_DIR}/externalConfig-*.cmake")
+file(GLOB CONFIG_FILES "${_DIR}/external-targets-*.cmake")
 foreach(f ${CONFIG_FILES})
   include(${f})
 endforeach()
